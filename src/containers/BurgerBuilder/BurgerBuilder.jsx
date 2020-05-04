@@ -85,28 +85,30 @@ class BurgerBuilder extends React.Component{
   };
 
   purchaseContinueHandler = () => {
-    this.setState({loading: true})
-    const order={
-      ingredients: this.state.ingredients,
-      price: this.state.totalPrice,
-      customer: {
-        name:"Jules",
-        address: {
-          street: "808-70 Garry street",
-          zipCode:"23452",
-          country: "Canada"
-        },
-        email:"test@tested.com"
-      },
-      deliveryMethod: 'Courier'
-    }
-    axios.post('/orders.json', order)
-    .then(response => {
-      this.setState({loading: false, purchasing: false});
-    })
-    .catch(error => {
-      this.setState({ loading: false, purchasing: false});
-    });
+    // this.setState({loading: true})
+    // const order={
+    //   ingredients: this.state.ingredients,
+    //   price: this.state.totalPrice,
+    //   customer: {
+    //     name:"Jules",
+    //     address: {
+    //       street: "808-70 Garry street",
+    //       zipCode:"23452",
+    //       country: "Canada"
+    //     },
+    //     email:"test@tested.com"
+    //   },
+    //   deliveryMethod: 'Courier'
+    // }
+    // axios.post('/orders.json', order)
+    // .then(response => {
+    //   this.setState({loading: false, purchasing: false});
+    // })
+    // .catch(error => {
+    //   this.setState({ loading: false, purchasing: false});
+    // });
+
+    
   };
 
   render(){
