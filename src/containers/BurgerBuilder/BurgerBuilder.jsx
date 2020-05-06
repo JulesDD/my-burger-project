@@ -7,7 +7,7 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import axios from '../../axios-orders';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHanlder';
-import {Route} from 'react-router-dom';
+
 
 
 const INGREDIENT_PRICES = {
@@ -86,32 +86,11 @@ class BurgerBuilder extends React.Component{
   };
 
   purchaseContinueHandler = () => {
-    // this.setState({loading: true})
-    // const order={
-    //   ingredients: this.state.ingredients,
-    //   price: this.state.totalPrice,
-    //   customer: {
-    //     name:"Jules",
-    //     address: {
-    //       street: "808-70 Garry street",
-    //       zipCode:"23452",
-    //       country: "Canada"
-    //     },
-    //     email:"test@tested.com"
-    //   },
-    //   deliveryMethod: 'Courier'
-    // }
-    // axios.post('/orders.json', order)
-    // .then(response => {
-    //   this.setState({loading: false, purchasing: false});
-    // })
-    // .catch(error => {
-    //   this.setState({ loading: false, purchasing: false});
-    // });
     const query = [];
     for (let i in this.state.ingredients) {
       query.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
     }
+    query.push('price=' + this.state.totalPrice);
     const queryString = query.join('&');
     this.props.history.push({
       pathname: '/checkout',
