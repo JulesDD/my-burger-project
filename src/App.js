@@ -12,8 +12,8 @@ export default class App extends React.Component {
       <div>
         <Layout>
           <Switch>
-            <Route path="/" component={BurgerBuilder}/>
-            <Route path="/checkout" component={Checkout}/>
+            <Route path = "/checkout" component = {Checkout}/>
+            <Route path="/" exacct component={BurgerBuilder}/>
           </Switch>
         </Layout>
       </div>

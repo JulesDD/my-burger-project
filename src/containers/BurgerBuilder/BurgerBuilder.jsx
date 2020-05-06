@@ -7,6 +7,7 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import axios from '../../axios-orders';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHanlder';
+import {Route} from 'react-router-dom';
 
 
 const INGREDIENT_PRICES = {
@@ -107,8 +108,15 @@ class BurgerBuilder extends React.Component{
     // .catch(error => {
     //   this.setState({ loading: false, purchasing: false});
     // });
-
-    
+    const query = [];
+    for (let i in this.state.ingredients) {
+      query.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
+    }
+    const queryString = query.join('&');
+    this.props.history.push({
+      pathname: '/checkout',
+      search:'?'+ queryString
+    });
   };
 
   render(){
