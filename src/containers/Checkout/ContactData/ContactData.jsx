@@ -43,8 +43,8 @@ export default class ContactData extends React.Component {
         value: '',
         validation: {
           required: true,
-          minLength:5,
-          maxLength:5
+          minLength:6,
+          maxLength:6
         },
         valid: false,
         touched: false
@@ -142,8 +142,8 @@ export default class ContactData extends React.Component {
       ...updatedOrderForm[inputIdentifier]
     };
     updatedFormElement.value = e.target.value;
-    updatedOrderForm.valid = this.checkValidity(updatedFormElement.value , updatedFormElement.validation);
-    updatedFormElement.touched= true;
+    updatedFormElement.valid = this.checkValidity(updatedFormElement.value ,updatedFormElement.validation);
+    updatedFormElement.touched = true;
     updatedOrderForm[inputIdentifier] = updatedFormElement;
 
     let formIsValid = true;
@@ -164,7 +164,6 @@ export default class ContactData extends React.Component {
     }
     let form = (
       <form onSubmit={this.orderHandler}>
-        <Input elementType="..." elementConfig="..." value="..." />
         {formElementsArray.map(formElement=> (
           <Input
             key = {formElement.id}
