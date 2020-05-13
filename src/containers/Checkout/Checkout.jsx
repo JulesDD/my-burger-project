@@ -36,12 +36,12 @@ export default class Checkout extends React.Component {
     return (
       <div>
         <CheckoutSummary
-        ingredients={this.state.ingredients}
-        checkoutCancel={this.checkoutCancelHandler}
-        checkoutContinue={this.checkoutContinueHandler}/>
+          ingredients={this.state.ingredients}
+          checkoutCancel={this.checkoutCancelHandler}
+          checkoutContinue={this.checkoutContinueHandler}/>
         <Route
-        path={this.props.match.path+ '/contact-data'}
-        render={(props)=>(<ContactData ingredients={this.state.ingredients} price={this.state.totalPrice} {...props}/>)}/>
+          path={this.props.match.path+ '/contact-data'}
+          render={(props)=>(<ContactData ingredients={this.state.ingredients} price={this.state.totalPrice} {...props}/>)}/>
       </div>
     );
   }
