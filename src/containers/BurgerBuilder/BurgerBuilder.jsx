@@ -92,7 +92,7 @@ class BurgerBuilder extends React.Component{
     //   search:'?'+ queryString
     // });
 
-    this.props.history.push('/chechout');
+    this.props.history.push('/checkout');
   };
 
   render(){
