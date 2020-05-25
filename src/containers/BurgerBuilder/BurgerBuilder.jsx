@@ -86,7 +86,7 @@ class BurgerBuilder extends React.Component{
     //   pathname: '/checkout',
     //   search:'?'+ queryString
     // });
-
+    this.props.onInitPurchase();
     this.props.history.push('/checkout');
   };
 
@@ -139,16 +139,17 @@ class BurgerBuilder extends React.Component{
 
 const mapStateToProps = state => {
   return{
-    ings: state.ingredients,
-    price: state.totalPrice,
-    error: state.error
+    ings: state.burgerBuilder.ingredients,
+    price: state.burgerBuilder.totalPrice,
+    error: state.burgerBuilder.error
   };
 }
 const mapDispatchToProps = dispatch => {
   return {
     onIngredientAdded: (ingName) => dispatch(actionsBurgerBuilder.addIngredients(ingName)),
     onIngredientRemoved: (ingName) => dispatch(actionsBurgerBuilder.removeIngredients(ingName)),
-    onInitIngredients: () => dispatch(actionsBurgerBuilder.initIngredients())
+    onInitIngredients: () => dispatch(actionsBurgerBuilder.initIngredients()),
+    onInitPurchase: () => dispatch(actionsBurgerBuilder.purchaseInit())
   }
 }
 
