@@ -64,7 +64,7 @@ export const fetchOrdersStart = () => {
 export const fetchOrders = () => {
   return dispatch => {
     dispatch(fetchOrdersStart());
-    axios.post('/orders.json')
+    axios.get('/orders.json')
       .then(response => {
         const fetchOrders = [];
         for (let key in response.data) {
@@ -74,10 +74,6 @@ export const fetchOrders = () => {
           });
         }
         dispatch(fetchOrdersSuccess(fetchOrders));
-        this.setState({
-          loading: false,
-          orders: fetchOrders
-        });
       })
       .catch(error => {
         dispatch(fetchOrdersFail(error));

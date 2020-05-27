@@ -14,17 +14,14 @@ class Orders extends React.Component {
   render() {
     let order = <Spinner />;
     if (!this.props.loading) {
-      order =
-        this.props.orders.map(
-          order => (
-            <Order
-              key={order.id}
-              ingredients={order.ingrdients}
-              price={order.price} />
-          )
-        )
-      }
-    
+    order = this.props.orders.map(
+              order => (
+                <Order
+                  key={order.id}
+                  ingredients={order.ingrdients}
+                  price={order.price} />
+                  ))
+                };
     return (
       <div>
         {order}
@@ -33,17 +30,17 @@ class Orders extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onFetchOrders: ()=>dispatch(actions.fetchOrders())
-  }
-}
-
 const mapStateToProps = state => {
   return {
     orders: state.order.orders,
     loading: state.order.loading
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchOrders: () => dispatch(actions.fetchOrders())
   }
-}
+};
 
 export default connect(mapStateToProps,mapDispatchToProps)(withErrorHandler(Orders,axios));
