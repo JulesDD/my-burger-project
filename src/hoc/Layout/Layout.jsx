@@ -1,10 +1,12 @@
 import React from 'react';
-import Auxillary from '../../hoc/Auxillary';
+import Auxillary from '../Auxillary';
 import classes from './Layout.module.css';
-import Toolbar from '../Navigation/Toolbar/Toolbar';
-import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
+import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
+import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
+import {connect} from 'react-redux';
+import { NULL } from 'node-sass';
 
-export default class Layout extends React.Component {
+class Layout extends React.Component {
   state ={
     showSideDrawer: false
   }
@@ -33,3 +35,11 @@ export default class Layout extends React.Component {
     );
   }
 };
+
+const mapStateToProps = state => {
+  return {
+    isAuthenticate: state.auth.token !== NULL
+  }
+}
+
+export default connect(mapStateToProps)(Layout)
