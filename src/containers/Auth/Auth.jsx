@@ -65,7 +65,6 @@ class Auth extends React.Component {
   }
 
   inputChangedHandler = (e, controlName) => {
-    e.preventDefault();
     const updatedControls = {
       ...this.state.controls,
       [controlName]: {
@@ -84,9 +83,9 @@ class Auth extends React.Component {
   };
 
   switchAuthModeHandler = () => {
-    this.setState( prevState => {
+    this.setState(prevState => {
       return {isSignup: !prevState.isSignup};
-    })
+    });
   }
 
   render(){
@@ -134,11 +133,11 @@ class Auth extends React.Component {
         {errorMessage}
           <form onSubmit={this.submitHandler}>
             {form}
-          <Button btnType="Success">SUBMIT</Button>
-        </form>
+            <Button btnType="Success">SUBMIT</Button>
+          </form>
         <Button
         clicked={this.switchAuthModeHandler}
-        btnType="Danger">{this.state.isSignup ? 'SIGN IN' : 'SIGN UP'}</Button>
+        btnType="Danger">SWITCH TO {this.state.isSignup ? 'SIGN IN' : 'SIGN UP'}</Button>
       </div>
     )
   }
@@ -149,8 +148,8 @@ const mapStateToProps = state => {
     loading: state.auth.loading,
     error: state.auth.error,
     isAuthenticated: state.auth.token !== null
-  }
-}
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return{
