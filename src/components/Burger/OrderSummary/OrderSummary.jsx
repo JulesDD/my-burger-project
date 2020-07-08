@@ -9,7 +9,6 @@ const orderSummary = (props) => {
             <span style={{textTransform: 'capitalize'}}>{igKey}</span>: {props.ingredients[igKey]}
           </li>
   });
-  console.log(props.ingridents)
   return(
     <Auxillary>
       <h3>Welcome to MyBurger</h3>
