@@ -4,7 +4,6 @@ import { configure, shallow } from 'enzyme';
 import NavigationItems from './NavigationItems';
 import NavigationItem from './NavigationItem/NavigationItem';
 
-
 configure({adapter: new Adapter()});
 
 describe('<NavigationItems />', ()=> {
@@ -22,5 +21,10 @@ describe('<NavigationItems />', ()=> {
     //wrapper = shallow(<NavigationItems isAuthenticated />);
     wrapper.setProps({isAuthenticated: true});
     expect(wrapper.find(NavigationItem)).toHaveLength(3);
+  });
+
+  it('should see if there is a logout link in Navigation Bar.', () => {
+    wrapper.setProps({ isAuthenticated: true });
+    expect(wrapper.contains(<NavigationItem link="/logout">Logout</NavigationItem>)).toEqualTrue;
   });
 });
