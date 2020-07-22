@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import {Redirect} from 'react-router-dom';
 import {updateObject, checkValidity} from '../../Shared/utility';
+
 class Auth extends React.Component {
   state = {
     controls:{
@@ -14,7 +15,7 @@ class Auth extends React.Component {
         elementType: 'input',
         elementConfig: {
           type: 'email',
-          placeholder: 'Your email address'
+          placeholder: 'Your email address here.'
         },
         value: '',
         validation: {
@@ -28,7 +29,7 @@ class Auth extends React.Component {
         elementType: 'input',
         elementConfig: {
           type: 'password',
-          placeholder: 'Your password here'
+          placeholder: 'Your password here.'
         },
         value: '',
         validation: {
@@ -48,8 +49,6 @@ class Auth extends React.Component {
       this.props.onSetAuthRedirectPath();
     }
   }
-
-
 
   inputChangedHandler = (e, controlName) => {
     const updatedControls = updateObject(this.state.controls, {

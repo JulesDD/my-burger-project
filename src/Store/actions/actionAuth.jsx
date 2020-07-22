@@ -19,7 +19,7 @@ export const authFail = (error) => {
   return {
     type: actionTypes.AUTH_FAIL,
     error: error
-  }
+  };
 };
 
 export const logout = () => {
@@ -53,17 +53,17 @@ export const auth = (email, password, isSignup) => {
       url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAG51bFVvNcJIaSqp3KTXg-NDadu-mYXYY';
     }
     axios.post(url, authData)
-.then(response => {
-  const expirationDate= new Date(new Date().getTime() + response.data.expiresIn * 1000);
-  localStorage.setItem('token', response.data.idToken);
-  localStorage.setItem('expirationDate', expirationDate);
-  localStorage.setItem('userId', response.data.localId);
-  dispatch(authSuccess(response.data.idToken, response.data.localId));
-  dispatch(checkAuthTimeout(response.data.expiresIn));
-})
-.catch(err => {
-  dispatch(authFail(err.response.data.error));
-});
+      .then(response => {
+        const expirationDate= new Date(new Date().getTime() + response.data.expiresIn * 1000);
+        localStorage.setItem('token', response.data.idToken);
+        localStorage.setItem('expirationDate', expirationDate);
+        localStorage.setItem('userId', response.data.localId);
+        dispatch(authSuccess(response.data.idToken, response.data.localId));
+        dispatch(checkAuthTimeout(response.data.expiresIn));
+      })
+      .catch(err => {
+        dispatch(authFail(err.response.data.error));
+      });
   };
 };
 
@@ -89,5 +89,5 @@ export const authCheckState = () => {
         dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) /1000));
       }
     }
-  }
-}
+  };
+};
