@@ -40,7 +40,7 @@ class Auth extends React.Component {
         touched: false
       }
     },
-    isSignup: false
+    isSignup: true
 
   }
 
